@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WaferHandling.ViewModels;
 
-namespace WaferHandling
+namespace WaferHandling.Views
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für RobotArmView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RobotArmView : UserControl
     {
-        public MainWindow()
+        public RobotArmView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }

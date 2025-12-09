@@ -14,17 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WaferHandling.ViewModels;
 
-namespace WaferHandling
+namespace WaferHandling.Views
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für WaferSlotView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WaferSlotView : UserControl
     {
-        public MainWindow()
+        public WaferSlotView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }
