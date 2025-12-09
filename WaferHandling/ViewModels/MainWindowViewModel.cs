@@ -41,30 +41,42 @@ namespace WaferHandling.ViewModels
             PauseCommand = new RelayCommand(PauseCycle);
         }
 
-        private void StartCycle()
+        // The Cycle Functions should probably be in a separate Class
+        private async void StartCycle()
         {
             if (!_isRunning)
                 _isRunning = true;
             else
                 return;
 
-            Console.WriteLine("TEST");
-            RobotArm.IsHandlingWafer = true;
-
-            FullLoadPort.PopWafer();
+            while (_isRunning)
+            {
+                await AnimateWaferHandling();
+            }
         }
 
+        // Pause does not truly cancel an operation because the "Animation" executes fully
+        // Would need an interrupt-like system (no time left though)
         private void PauseCycle()
         {
             if (_isRunning)
                 _isRunning = false;
             else
                 return;
+        }
 
-            Console.WriteLine("TEST");
-            RobotArm.IsHandlingWafer = false;
-
+        private async Task AnimateWaferHandling()
+        {
+            FullLoadPort.PopWafer();
+            RobotArm.IsHandlingWafer = true;
+            await Task.Delay(500);
+            RobotArm.RotateRight();
+            await Task.Delay(500);
             EmptyLoadPort.PushWafer();
+            RobotArm.IsHandlingWafer = false;
+            await Task.Delay(500);
+            RobotArm.RotateLeft();
+            await Task.Delay(500);
         }
     }
 }

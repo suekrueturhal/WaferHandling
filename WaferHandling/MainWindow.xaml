@@ -21,9 +21,16 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <local:RobotArmView DataContext="{Binding RobotArm}"  
-                            Margin="0,0,200,0" 
-                            RenderTransformOrigin="0.67,0.505" />
+        <local:RobotArmView 
+            DataContext="{Binding RobotArm}"
+            Margin="0,0,200,0"
+            RenderTransformOrigin="0.67,0.505">
+
+            <local:RobotArmView.RenderTransform>
+                <RotateTransform Angle="{Binding RotationAngle}" />
+            </local:RobotArmView.RenderTransform>
+        </local:RobotArmView>
+
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20">
             <Button Content="Start"

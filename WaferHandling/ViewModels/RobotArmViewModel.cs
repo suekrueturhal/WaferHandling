@@ -54,5 +54,22 @@ namespace WaferHandling.ViewModels
                 }
             }
         }
+
+        // Missing async Functions to actually animate over time
+        public void RotateLeft()
+        {
+            RotationAngle = NormalizeAngle(RotationAngle - 180);
+        }
+
+        public void RotateRight()
+        {
+            RotationAngle = NormalizeAngle(RotationAngle + 180);
+        }
+
+        private double NormalizeAngle(double angle)
+        {
+            angle %= 360;
+            return angle < 0 ? angle + 360 : angle;
+        }
     }
 }
