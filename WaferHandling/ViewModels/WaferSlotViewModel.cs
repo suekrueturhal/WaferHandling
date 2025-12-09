@@ -23,7 +23,7 @@ namespace WaferHandling.ViewModels
         public bool IsOccupied
         {
             get => _waferSlot.IsOccupied;
-            private set
+            set
             {
                 if (_waferSlot.IsOccupied != value)
                 {
@@ -31,11 +31,6 @@ namespace WaferHandling.ViewModels
                     OnPropertyChanged(); 
                 }
             }
-        }
-
-        public void SetOccupied(bool isOccupied)
-        {
-            IsOccupied = isOccupied;  
         }
     }
 }

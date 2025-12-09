@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Input;
 using WaferHandling.Commands;
 using WaferHandling.Models;
@@ -19,6 +20,9 @@ namespace WaferHandling.ViewModels
         public RobotArmViewModel RobotArm { get; }
 
         public ICommand StartCommand {  get; }
+        public ICommand PauseCommand { get; }
+
+        private bool _isRunning;
 
         public MainWindowViewModel()
         {
@@ -31,18 +35,36 @@ namespace WaferHandling.ViewModels
                 EmptyLoadPort,
             };
 
-            var robotArmModel = new RobotArm();
-            RobotArm = new RobotArmViewModel(isHandlingWafer: false);
+            RobotArm = new RobotArmViewModel();
 
-            StartCommand = new RelayCommand(OnStart);
+            StartCommand = new RelayCommand(StartCycle);
+            PauseCommand = new RelayCommand(PauseCycle);
         }
 
-        private void OnStart()
+        private void StartCycle()
         {
+            if (!_isRunning)
+                _isRunning = true;
+            else
+                return;
+
             Console.WriteLine("TEST");
-            RobotArm.SetHandlingWafer(!RobotArm.IsHandlingWafer);
+            RobotArm.IsHandlingWafer = true;
 
             FullLoadPort.PopWafer();
+        }
+
+        private void PauseCycle()
+        {
+            if (_isRunning)
+                _isRunning = false;
+            else
+                return;
+
+            Console.WriteLine("TEST");
+            RobotArm.IsHandlingWafer = false;
+
+            EmptyLoadPort.PushWafer();
         }
     }
 }

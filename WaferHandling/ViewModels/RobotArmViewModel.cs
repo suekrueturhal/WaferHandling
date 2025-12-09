@@ -11,12 +11,9 @@ namespace WaferHandling.ViewModels
     {
         private readonly RobotArm _robotArm;
 
-        public RobotArmViewModel(bool isHandlingWafer)
+        public RobotArmViewModel()
         {
-            _robotArm = new RobotArm
-            {
-                IsHandlingWafer = isHandlingWafer,
-            };
+            _robotArm = new RobotArm();
         }
 
         public bool IsHandlingWafer
@@ -32,9 +29,30 @@ namespace WaferHandling.ViewModels
             }
         }
 
-        public void SetHandlingWafer(bool isHandlingWafer)
+        public bool IsRunning
         {
-            IsHandlingWafer = isHandlingWafer;
+            get => _robotArm.IsRunning;
+            set
+            {
+                if (_robotArm.IsRunning != value)
+                {
+                    _robotArm.IsRunning = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public double RotationAngle
+        {
+            get => _robotArm.RotationAngle;
+            set
+            {
+                if (_robotArm.RotationAngle != value)
+                {
+                    _robotArm.RotationAngle = value;
+                    OnPropertyChanged();
+                }
+            }
         }
     }
 }

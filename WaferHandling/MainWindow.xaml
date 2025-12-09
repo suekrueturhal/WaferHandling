@@ -25,12 +25,16 @@
                             Margin="0,0,200,0" 
                             RenderTransformOrigin="0.67,0.505" />
 
-        <Button Content="Start"
-                Command="{Binding StartCommand}"
-                Width="50" Height="20"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Margin="0,20" />
-
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20">
+            <Button Content="Start"
+                    Command="{Binding StartCommand}"
+                    Width="50" Height="20" 
+                    Margin="20,0" />
+            <Button Content="Pause"
+                    Command="{Binding PauseCommand}"
+                    Width="50" Height="20"
+                    Margin="20,0" />
+        </StackPanel>
+        
     </Grid>
 </Window>

@@ -35,7 +35,7 @@ namespace WaferHandling.ViewModels
                 if (!slot.IsOccupied)
                     continue;
 
-                slot.SetOccupied(false);
+                slot.IsOccupied = false;
                 break;
             }
         }
@@ -47,7 +47,7 @@ namespace WaferHandling.ViewModels
                 if (slot.IsOccupied)
                     continue;
 
-                slot.SetOccupied(true);
+                slot.IsOccupied = true;
                 break;
             }
         }
