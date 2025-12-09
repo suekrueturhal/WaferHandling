@@ -8,7 +8,7 @@ using WaferHandling.Models;
 
 namespace WaferHandling.ViewModels
 {
-    internal class WaferSlotViewModel
+    internal class WaferSlotViewModel : ViewModelBase
     {
         private readonly WaferSlot _waferSlot;
 
@@ -20,7 +20,22 @@ namespace WaferHandling.ViewModels
             };
         }
 
-        public bool IsOccupied => _waferSlot.IsOccupied;
-        public void SetOccupied(bool isOccupied) { _waferSlot.IsOccupied = isOccupied; }
+        public bool IsOccupied
+        {
+            get => _waferSlot.IsOccupied;
+            private set
+            {
+                if (_waferSlot.IsOccupied != value)
+                {
+                    _waferSlot.IsOccupied = value;
+                    OnPropertyChanged(); 
+                }
+            }
+        }
+
+        public void SetOccupied(bool isOccupied)
+        {
+            IsOccupied = isOccupied;  
+        }
     }
 }

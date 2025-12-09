@@ -16,11 +16,21 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:LoadPortView Margin="300,0" />
+                    <local:LoadPortView Margin="250,0" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <local:RobotArmView Margin="0,0,200,0" RenderTransformOrigin="0.67,0.505" />
+        <local:RobotArmView DataContext="{Binding RobotArm}"  
+                            Margin="0,0,200,0" 
+                            RenderTransformOrigin="0.67,0.505" />
+
+        <Button Content="Start"
+                Command="{Binding StartCommand}"
+                Width="50" Height="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,20" />
+
     </Grid>
 </Window>

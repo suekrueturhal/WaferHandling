@@ -5,10 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WaferHandling.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="250">
-    <Grid RenderTransformOrigin="0.905,0.55">
+             d:DesignHeight="25" d:DesignWidth="300">
+    <Grid RenderTransformOrigin="0.8375,0.52">
         <Ellipse Height="25" Width="25" Fill="SteelBlue" Margin="0,0,200,0" />
-        <Rectangle Width="200" Height="10" Fill="SteelBlue" />
+        <Rectangle Width="200" Height="7" Fill="SteelBlue" />
         <Ellipse Height="15" Width="15" Fill="Gray" Margin="0,0,-200,0" />
+
+        <Rectangle Height="9.5" Width="76.5" Margin="0,0,200,0">
+            <Rectangle.Style>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill" Value="Transparent"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsHandlingWafer}" Value="True">
+                            <Setter Property="Fill" Value="Yellow"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Rectangle.Style>
+        </Rectangle>
     </Grid>
 </UserControl>
